@@ -341,8 +341,9 @@ if choice == 'Data Analysis':
         try:
             download_plotly_figures_as_png(figures_list, "images")
             output_data = create_binaryrep_with_images("images")
-        except:
-            st.error('Something went wrong', icon="🚨")
+        except Exception as e:
+            e_msg = "Something went wrong: " + e
+            st.error(e_msg, icon="🚨")
         else:
             st.success('Images saved!', icon='🤖')
 
