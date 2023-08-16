@@ -86,7 +86,7 @@ if choice == 'Data Initialization':
         save_config = st.form_submit_button(label='Save MySQL Connection')
         st.text('OR')
         uploaded_file = st.file_uploader("Choose a CSV file")
-        save_file = st.form_submit_button(label='Save CSV as Data')
+        save_file = st.form_submit_button(label='Save')
     
     if save_config:
         test_connection = dict()
@@ -103,7 +103,6 @@ if choice == 'Data Initialization':
             connection = test_connection
             st.success('Connection established!', icon='🤖')
 
-    
     if save_file:
         try:
             df = pd.read_csv(uploaded_file)
