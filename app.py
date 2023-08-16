@@ -116,8 +116,8 @@ if choice == 'Data Initialization':
 if choice == 'Data Analysis':
 
     # ----- SQL Connection -----
-    r_connection = {'hostname': 'localhost', 'username': 'root', 'password': 'cdev', 'database': 'cph', 'table': 'reservations'}
-    r_df = retrieve_data_from_connections(r_connection)
+    # r_connection = {'hostname': 'localhost', 'username': 'root', 'password': 'cdev', 'database': 'cph', 'table': 'reservations'}
+    # r_df = retrieve_data_from_connections(r_connection)
     # ----- DataFrame Edits -----
     df['submission_date'] = pd.to_datetime(df['submission_date'], format='%Y-%m-%d')
     df['month'] = df['submission_date'].dt.month
@@ -135,10 +135,10 @@ if choice == 'Data Analysis':
     ihg_tier_percentage.columns = ['IHG_tier', 'Percentage']
     ihg_tier_percentage['Percentage'] *= 100
 
-    r_df['check_in'] = pd.to_datetime(r_df['check_in'], format='%Y-%m-%d')
-    r_df['check_out'] = pd.to_datetime(r_df['check_out'], format='%Y-%m-%d')
-    r_df['date_delta'] = (r_df['check_out'] - r_df['check_in']).dt.days
-    r_df['estim_charge'] = r_df['date_delta'] * r_df['rate']
+    # r_df['check_in'] = pd.to_datetime(r_df['check_in'], format='%Y-%m-%d')
+    # r_df['check_out'] = pd.to_datetime(r_df['check_out'], format='%Y-%m-%d')
+    # r_df['date_delta'] = (r_df['check_out'] - r_df['check_in']).dt.days
+    # r_df['estim_charge'] = r_df['date_delta'] * r_df['rate']
 
     # ----- Sidebar -----
     st.sidebar.header("Filter")
