@@ -191,8 +191,6 @@ if choice == 'Data Analysis':
     st.markdown("***")
 
     # ----- Charts -----
-
-
     rating_by_month = st.selectbox("Rating by month: ", options=['service_rating', 'room_rating', 'cleanliness_rating', 'location_rating'])
     fig_zero = px.histogram(df_selection[['service_rating', 'room_rating', 'cleanliness_rating', 'location_rating', 'IHG_tier', 'month']], x='month', y=rating_by_month, height=400, histfunc='avg')
     fig_zero.update_layout(bargap=0.2)
@@ -245,7 +243,10 @@ if choice == 'Data Analysis':
     plt.imshow(wordcloud, interpolation='bilinear')
     st.pyplot(plt.gcf())
     st.text('to save this figure, right click and press "save image as"')
-    st.dataframe(df_selection)
+
+    kw = st.text_input('Search Review Keyword')
+    df_search = df.query('review.str.contains(@kw)', engine='python')
+    st.dataframe(df_search)
 
     # BACKEND FIGS
     backend_fig1_1 = px.histogram(df_selection[['service_rating', 'room_rating', 'cleanliness_rating', 'location_rating', 'IHG_tier', 'month']], x='month', y='service_rating', height=400, histfunc='avg')
